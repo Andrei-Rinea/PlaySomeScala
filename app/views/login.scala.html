@@ -1,0 +1,16 @@
+@(form: Form[Credentials])
+
+@main("Welcome to Play") {
+
+    @helper.form(action = routes.LoginController.doLogin()) {
+
+        @helper.inputText(form("username"))
+        @helper.inputPassword(form("password"))
+
+        <input type="submit" value="login"/>
+
+        @form.globalErrors.map { error =>
+            <div>@error.message</div>
+        }
+    }
+}
